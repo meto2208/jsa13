@@ -30,7 +30,7 @@ const main = async () => {
         const filteredData = await getArrayLongestCapitolCities(parsedData);
         const filteredDataSortAndPickLongestTenNames = filteredData.sort((a, b) => b.city.length - a.city.length).slice(0, 10);
         const filteredDataSortAndPickLongestTenNamesString = JSON.stringify(filteredDataSortAndPickLongestTenNames);
-        await fileSystem.write('../output/longest-10-capitol-city.json', filteredDataSortAndPickLongestTenNamesString)
+        await fileSystem.write('../output/longest-10-capitol-city-names.json', filteredDataSortAndPickLongestTenNamesString)
 
 
     } catch (error) {
