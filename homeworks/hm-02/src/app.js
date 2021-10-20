@@ -43,14 +43,19 @@ app
         res.status(200).send(students[req.params.id])
     })
     .delete('/students/:id', (req, res) => {
-
+        if (!students[req.params.id]) {
+            return res.status(404).send("Not Found");
+        }
         students = students.filter((el, ind) => ind != req.params.id);
         let studentsString = JSON.stringify(students);
-        res.status(201).send('Student is successfully deleted.');
+        res.status(204).send('Student is successfully deleted.');
         fs.writeFileSync('../data/students.json', studentsString)
 
     })
     .put("/students/:id", (req, res) => {
+        if (!students[req.params.id]) {
+            return res.status(404).send("Not Found");
+        }
         let index = students.findIndex((student, id) => id == req.params.id);
 
         students[index] = {
