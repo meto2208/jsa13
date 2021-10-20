@@ -9,6 +9,7 @@ const getArrayLongestCapitolCities = (arr) => {
         }
     })
     const sortNumsDescAndPickTenthNum = lengthOfCharInString.sort((a, b) => b - a).slice(9, 10)
+    console.log(lengthOfCharInString);
     const filteredArray = arr.filter((el) => {
         if (el.city !== null) {
             const removingSpaces = el.city.split(' ').join(' ');
