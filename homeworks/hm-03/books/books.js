@@ -9,7 +9,7 @@ const getAll = async () => {
 };
 
 const create = async (bookData) => {
-    let data = await fs.read('books.json');
+    let data = await fs.read(db);
     let book = {
         id: id,
         title: bookData.title,
@@ -21,15 +21,15 @@ const create = async (bookData) => {
 
     };
     data = [...data, book];
-    await fs.write('books.json', data);
+    await fs.write(db, data);
     return book
 };
 const getOne = async (id) => {
-    let data = await fs.read('books.json');
+    let data = await fs.read(db);
     let book = data.find(b => b.id === id);
 };
 const update = async (id, bookData) => {
-    let data = await fs.read('books.json');
+    let data = await fs.read(db);
     data = data.map(b => {
         if (b.id === id) {
             b.title = bookData.title
@@ -41,10 +41,10 @@ const update = async (id, bookData) => {
         }
         return b
     });
-    await fs.write('books.json', data)
+    await fs.write(db, data)
 };
 const partialUpdate = async (id, bookData) => {
-    let data = await fs.read('books.json');
+    let data = await fs.read(db);
 
     data = data.map(b => {
         if (b.id === id) {
@@ -57,16 +57,16 @@ const partialUpdate = async (id, bookData) => {
         }
         return b
     });
-    await fs.write('books.json', data);
+    await fs.write(db, data);
 };
 const remove = async (id) => {
-    let data = await fs.read('books.json');
+    let data = await fs.read(db);
     let prevLength = data.length;
     data = data.filter(e => e.id != id);
     if (prevLength === data.length) {
         return false
     }
-    await fs.write('books.json', data)
+    await fs.write(db, data)
     return true
 
 }
