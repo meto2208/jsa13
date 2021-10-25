@@ -2,27 +2,28 @@ const fs = require('fs');
 
 const read = (fileName) => {
     return new Promise((res, rej) => {
-        fs.readFile(fileName, 'utf-8', (err, data) => {
+        fs.readFile(fileName, (err, data) => {
             if (err) {
                 return rej(err)
             } else {
-                const parsedData = JSON.parse(data)
-                return res(parsedData)
-            }
-        })
-    })
-}
+                data = JSON.parse(data);
+                return res(data)
+            };
+        });
+    });
+};
 
 const write = (fileName, data) => {
     return new Promise((res, rej) => {
-        const dataString = JSON.stringify(data)
-        fs.writeFile(fileName, dataString, err => {
+        const fileNameString = JSON.stringify(data)
+        fs.writeFile(fileName, fileNameString, err => {
             if (err) {
                 return rej(err)
             }
+            return res()
         })
-    })
-}
+    });
+};
 
 
 module.exports = {
