@@ -1,0 +1,20 @@
+{
+    "security": {
+        "algorithms": [
+            "HS256"
+        ],
+        "secret": "thisissparta"
+    },
+    "app": {
+        "port": "3002",
+        "upload_dir": "uploads",
+        "max_file_size": 1048576,
+        "allowed_filetypes": [
+            "image/jpg",
+            "image/jpeg",
+            "image/pjpg",
+            "image/png",
+            "image/gif"
+        ]
+    }
+}

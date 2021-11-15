@@ -1,0 +1,11 @@
+{
+    "security": {
+        "secret": "thisissparta",
+        "algorithms": [
+            "HS256"
+        ]
+    },
+    "app": {
+        "port": "3000"
+    }
+}
